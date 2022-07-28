@@ -8,20 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: '3.8'
       - id: echoecho
         run: |
           echo '::set-output name=echo1::true'
           echo '::set-output name=echo2::false'
           sh echo.sh
+          python echo.py
       - name: Check1
-        if: steps.echoecho.outputs.echo1
+        if: steps.echoecho.outputs.echo1=='true'
         run: echo 'check 1 passed'
       - name: Check2
-        if: steps.echoecho.outputs.echo2
+        if: steps.echoecho.outputs.echo2=='true'
         run: echo 'check 2 passed'
       - name: Check3
-        if: steps.echoecho.outputs.echo3
+        if: steps.echoecho.outputs.echo3=='true'
         run: echo 'check 3 passed'
       - name: Check4
-        if: steps.echoecho.outputs.echo4
+        if: steps.echoecho.outputs.echo4=='true'
         run: echo 'check 4 passed'

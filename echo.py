@@ -1,0 +1,1 @@
+print('::set-output name=echo4::true')
