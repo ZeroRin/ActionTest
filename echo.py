@@ -1,1 +1,4 @@
-print('::set-output name=echo4::true')
+from pathlib import Path
+
+with open('text.txt','r') as f:
+    print(f.read())

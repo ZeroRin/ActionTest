@@ -2,7 +2,16 @@ name: TestOutput
 
 on:
   workflow_dispatch:
-
+    inputs:
+      cmdargs:
+        description: 'Commandline Arguments'     
+        required: false
+        default: 'input' 
+        type: string
+  push:
+    paths:
+      - 'text.txt'
+      
 jobs:
   RescueEventUpdate:
     runs-on: ubuntu-latest
@@ -14,19 +23,5 @@ jobs:
           python-version: '3.8'
       - id: echoecho
         run: |
-          echo '::set-output name=echo1::true'
-          echo '::set-output name=echo2::false'
-          sh echo.sh
-          python echo.py
-      - name: Check1
-        if: steps.echoecho.outputs.echo1=='true'
-        run: echo 'check 1 passed'
-      - name: Check2
-        if: steps.echoecho.outputs.echo2=='true'
-        run: echo 'check 2 passed'
-      - name: Check3
-        if: steps.echoecho.outputs.echo3=='true'
-        run: echo 'check 3 passed'
-      - name: Check4
-        if: steps.echoecho.outputs.echo4=='true'
-        run: echo 'check 4 passed'
+          echo ${{ github.event }}
+          echo ${{ inputs.cmdargs || 'default' }} ${{ github.event_name=='push' && 'push' || 'other' }}
