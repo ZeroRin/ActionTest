@@ -20,12 +20,9 @@ jobs:
           echo "::set-output name=m3::333"
       - id: echoecho2
         run: |
-          MY_STRING="${{ join(steps.echoecho.outputs.*,'%') }}"
-          MY_STRING="${MY_STRING//'%'/$'\n'}"
-          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
-          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+          MY_STRING="${{ join(steps.echoecho.outputs.*,'%0A') }}"
           echo $MY_STRING
           echo "::set-output name=content::$MY_STRING"
       - id: echoecho3
         run: |
-          echo "{{ steps.echoecho2.outputs.content }}"
+          echo {{ steps.echoecho2.outputs.content }}
