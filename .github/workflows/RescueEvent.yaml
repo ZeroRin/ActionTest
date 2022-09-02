@@ -9,19 +9,15 @@ on:
         default: 'input' 
         type: string
   push:
-    paths:
-      - 'text.txt'
       
 jobs:
   RescueEventUpdate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2.2.2
-        with:
-          python-version: '3.8'
       - id: echoecho
         run: |
-          echo ${{ github.event }}
-          echo ${{ inputs.cmdargs || 'default' }} ${{ github.event_name=='push' && 'push' || 'other' }}
+          echo "::set-output name=m1::111"
+          echo "::set-output name=m3::333"
+      - id: echoecho2
+        run: |
+          echo "${{ join([steps.echoecho.outputs.m1,steps.echoecho.outputs.m2,steps.echoecho.outputs.m3],'\n') }}"
