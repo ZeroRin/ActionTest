@@ -20,4 +20,4 @@ jobs:
           echo "::set-output name=m3::333"
       - id: echoecho2
         run: |
-          echo "${{ join([steps.echoecho.outputs.m1,steps.echoecho.outputs.m2,steps.echoecho.outputs.m3],'\n') }}"
+          echo "${{ join(steps.echoecho.outputs.m*,'\n') }}"
