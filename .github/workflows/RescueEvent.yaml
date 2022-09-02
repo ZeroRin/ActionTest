@@ -25,4 +25,4 @@ jobs:
           echo "::set-output name=content::$MY_STRING"
       - id: echoecho3
         run: |
-          echo {{ steps.echoecho2.outputs.content }}
+          echo "${{ steps.echoecho2.outputs.content }}"
