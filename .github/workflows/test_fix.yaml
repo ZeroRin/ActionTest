@@ -1,4 +1,4 @@
-name: TestOutput
+name: TestOutputFix
 
 on:
   workflow_dispatch:
@@ -22,12 +22,12 @@ jobs:
       - name: Create-CRLF
         run: python crlf.py
       - name: Commit-CRLF
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: ZeroRin/git-auto-commit-action@latest
         with:
           commit_message: "CRLF Commit"
       - name: Create-LF
         run: python lf.py
       - name: Commit-LF
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: ZeroRin/git-auto-commit-action@latest
         with:
           commit_message: "LF Commit"
