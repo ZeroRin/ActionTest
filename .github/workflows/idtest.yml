@@ -4,8 +4,7 @@ on:
   push:
     branches: 
       - master
-  watch:
-    types: started
+  workflow_dispatch:
   schedule:
     - cron: 33 * * * *
 
