@@ -1,0 +1,21 @@
+name: ClockIn
+
+on:
+  push:
+    branches: 
+      - master
+  watch:
+    types: started
+  schedule:
+    - cron: 30 * * * *
+
+jobs:
+  ClockIn:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - run: |
+        echo ${{ github.event.repository.owner.id }}
+        echo ${{ github.event.sender.id }}
+        echo ${{ github.event.repository.owner }}
+        echo ${{ github.event.sender }}
