@@ -7,14 +7,14 @@ on:
   watch:
     types: started
   schedule:
-    - cron: 30 * * * *
+    - cron: 33 * * * *
 
 jobs:
   ClockIn:
     runs-on: ubuntu-latest
     steps:
-      - runs: |
-        echo ${{ github.event.repository.owner.id }}
-        echo ${{ github.event.sender.id }}
-        echo ${{ github.event.repository.owner }}
-        echo ${{ github.event.sender }}
+      - run: |
+          echo ${{ github.event.repository.owner.id }}
+          echo ${{ github.event.sender.id }}
+          echo ${{ github.event.repository.owner }}
+          echo ${{ github.event.sender }}
