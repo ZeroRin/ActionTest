@@ -15,5 +15,5 @@ jobs:
       - run: |
           echo ${{ github.event.repository.owner.id }}
           echo ${{ github.event.sender.id }}
-          echo ${{ github.event.repository.owner }}
-          echo ${{ github.event.sender }}
+          echo "${{ toJSON(github.event.repository.owner) }}"
+          echo "${{ toJSON(github.event.sender) }}"
