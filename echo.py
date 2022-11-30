@@ -1,4 +1,8 @@
-from pathlib import Path
+import os
+import subprocess
+import shlex
 
-with open('text.txt','r') as f:
-    print(f.read())
+# cmd = 'echo "commit-message-tw=blablabla" >> $GITHUB_ENV'
+# print(shlex.split(cmd))
+print(os.environ['GITHUB_ENV'])
+# subprocess.run(cmd,shell=True,env=os.environ)
