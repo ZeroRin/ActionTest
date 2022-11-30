@@ -16,3 +16,7 @@ jobs:
       - id: echoecho
         run: |
           python echo.py
+      - run: |
+          echo ${{ env.name1 }} 
+          echo ${{ env.name2 }} 
+          echo ${{ env.name3 }} 
