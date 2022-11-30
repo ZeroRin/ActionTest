@@ -1,0 +1,19 @@
+name: idtest
+
+on:
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+  schedule:
+    - cron: 0/5 * * * *
+
+jobs:
+  ClockIn:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.event.repository.owner.id }}
+          echo ${{ github.event.sender.id }}
+          echo "${{ toJSON(github.event.repository.owner) }}"
+          echo "${{ toJSON(github.event.sender) }}"
